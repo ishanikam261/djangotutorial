@@ -1,0 +1,23 @@
+p.center {
+    text-align: center;
+    color: black;
+}
+p.large {
+    font-size: 300%;
+
+}
+
+ a {
+    color: rgb(22, 16, 1);
+
+}
+ form {
+       background-color: pink;
+ }
+body {
+    background:  url("stunning-canadian-rocky-mountains-twilight-260nw-2525693117.webp") no-repeat;
+    background-size: cover;
+    height: 100vh;
+   
+}
+
