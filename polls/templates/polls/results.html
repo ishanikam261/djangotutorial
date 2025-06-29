@@ -1,11 +1,83 @@
 
-<h1>{{ question.question_text }}</h1>
-<h2>
-<ol>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ol>
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
-</h2>
+
+
+
+
+
+<html>
+<head>
+    <title>Poll Results</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f2f6ff;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #3a4fdd;
+            margin-bottom: 30px;
+        }
+
+        ol {
+            list-style: decimal inside;
+            padding-left: 0;
+            text-align: left;
+        }
+
+        li {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .vote-link {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background: #3a4fdd;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .vote-link:hover {
+            background: #2839c7;
+        }
+    </style>
+</head>
+<body style="background-color:powderblue;">
+   
+     <h1>{{ question.question_text }}</h1>
     
+    {% for choice in question.choice_set.all %}
+        <li>{{choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+    
+    
+        <a href="{% url 'polls:detail' question.id %}" class="vote-link">Vote Again?</a>
+ 
+</body>
+</html>
+
+
+
+
+
+
+        
+
+
+

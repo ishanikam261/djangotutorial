@@ -1,14 +1,96 @@
-<h2>
-<form action="{% url 'polls:vote' question.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-</fieldset>
-<input type="submit" value="Vote">
-</form>
-</h2>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ question.question_text }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 25px;
+            font-size: 22px;
+            color: #333;
+        }
+        label {
+            display: block;
+            text-align: left;
+            padding: 10px;
+            border-radius: 6px;
+            margin: 10px 0;
+            background: #f1f1f1;
+            transition: background 0.3s ease;
+            cursor: pointer;
+        }
+        label:hover {
+            background: #e0e0e0;
+        }
+        input[type="radio"] {
+            margin-right: 10px;
+            accent-color: #007BFF;
+        }
+        .vote-btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .vote-btn:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            margin-bottom: 15px;
+        }
+        
+   
+        
+    </style>
+</head>
+
+
+
+
+
+<body style="background-color:powderblue;">
+    <h1>
+
+    <div>
+        <h1>{{ question.question_text }}</h1>
+        <form action="{% url 'polls:vote' question.id %}" method="post">
+            {% csrf_token %}
+            {% if error_message %}
+                <p class="error"><strong>{{ error_message }}</strong></p>
+            {% endif %}
+            {% for choice in question.choice_set.all %}
+                <label>
+                    <input type="radio" name="choice" value="{{ choice.id }}">
+                    {{ choice.choice_text }}
+                </label>
+            {% endfor %}
+            <button type="submit" class="vote-btn">Vote</button>
+        </form>
+      
+    </div>
+  
+</h1>
+</body>
+</html>
