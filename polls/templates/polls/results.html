@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>Poll Results</title>
+    
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -37,10 +37,7 @@
             text-align: left;
         }
 
-        li {
-            font-size: 18px;
-            margin: 10px 0;
-        }
+        
 
         .vote-link {
             display: inline-block;
@@ -58,14 +55,14 @@
         }
     </style>
 </head>
-<body style="background-color:powderblue;">
-   
+<body style="background-color:plum;">
+     <h1>Result</h1><h2>.............................................</h2>
      <h1>{{ question.question_text }}</h1>
     
     {% for choice in question.choice_set.all %}
-        <li>{{choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+       <h2> <li>{{choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li></h2>
     {% endfor %}
-    
+    <h2>................................................</h2>
     
         <a href="{% url 'polls:detail' question.id %}" class="vote-link">Vote Again?</a>
  
